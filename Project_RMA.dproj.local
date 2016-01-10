@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.dfm,F:\!my_works\!Education\!Diploma(Magistr)\PRG\tmp03\UnitZiSet01.dfm=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.dfm,F:\Univercity\Diplom\RMA TP (V3.0.0.7)\Unit_Otvir.dfm=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.pas,F:\!my_works\!Education\!Diploma(Magistr)\PRG\tmp03\UnitZiSet01.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.297,=C:\Users\Deniel\Desktop\RMA TP (V3) Update_1\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.789,C:\Users\Deniel\Desktop\RMA TP (V3) Update_1\Unit1.pas=C:\Users\Deniel\Desktop\RMA TP (V3) Update_1\SysUtils.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.pas,F:\Univercity\Diplom\RMA TP (V3.0.0.7)\Unit_Otvir.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.dfm,F:\Univercity\Diplom\RMA TP (V3.0.0.4)\Unit15.dfm=F:\Univercity\Diplom\RMA TP (V3.0.0.4)\Unit_Otvir.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.pas,F:\!my_works\!Education\!Diploma(Magistr)\PRG\tmp03\Unit14.pas=F:\!my_works\!Education\!Diploma(Magistr)\PRG\tmp03\UnitZiSet01.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.pas,F:\Univercity\Diplom\RMA TP (V3.0.0.4)\Unit15.pas=F:\Univercity\Diplom\RMA TP (V3.0.0.4)\Unit_Otvir.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.pas,F:\!my_works\!Education\!Diploma(Magistr)\PRG\tmp03\Unit1.pas=F:\!my_works\!Education\!Diploma(Magistr)\PRG\tmp03\u_Word_Excel.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.dfm,F:\!my_works\!Education\!Diploma(Magistr)\PRG\tmp03\Unit14.dfm=F:\!my_works\!Education\!Diploma(Magistr)\PRG\tmp03\UnitZiSet01.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.pas,F:\!my_works\!Education\!Diploma(Magistr)\PRG\tmp03\Unit10.pas=F:\!my_works\!Education\!Diploma(Magistr)\PRG\tmp03\UnitZvit.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.dfm,F:\!my_works\!Education\!Diploma(Magistr)\PRG\tmp03\Unit10.dfm=F:\!my_works\!Education\!Diploma(Magistr)\PRG\tmp03\UnitZvit.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="qhrjm78kz553y0s5j_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:Project_RMA:MainUnit.TForm1">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,238,1027" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.ControlBar1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.MainMenu1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.File_1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.New" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.Open" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.Exit" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N5" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N6" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.Settings" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.Help" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.Save" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.Help_1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N2" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.Info" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.ToolBar1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.ToolButton_New" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.ToolButton_Open" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.ToolButton_Save" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.ToolButton3" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.ToolButton4" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.ToolButton5" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.ToolButton6" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.ImageList1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.StatusBar1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.OpenDialog1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.SaveDialog1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N3" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N4" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.Image1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.XPManifest1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N7" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.View1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.Print" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N10" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N11" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N12" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N13" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N14" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N15" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N16" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N17" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N18" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N19" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N20" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.StringGrid1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.StringGrid2" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.Label1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.Label2" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.N8" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.ApplicationEvents1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.TForm1.Label3" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.TForm1.FormActivate(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.TForm1.SettingsClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.TForm1.ExitClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.TForm1.NewClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.TForm1.OpenClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.TForm1.SaveClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.TForm1.FormShow(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.TForm1.N8Click(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.TForm1.InfoClick(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.TForm1.FormResize(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.TForm1.ApplicationEvents1Hint(System.TObject)" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.TForm1.ShowHint(System.TObject)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:Project_RMA:MainUnit.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.Form1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.Sys_F" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.tmp_f" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.S_F" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.FileNane" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.z_s" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.counter" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.Dname" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.Name" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.fname" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.Mname" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.forma" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.Mtype" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.NOp" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.NZag" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.NDet" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.NBi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.NAi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.NFi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.NZi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.Zn" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.z" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.z_" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.POb" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.PAi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.PBi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.PFi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.PZi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.PTB" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.demo" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:MainUnit.@unitclass.SaveCalc" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.@unitclass.OpenRMA(System.string,ref@System.Integer)" />
+      <reference referencedUin="delphi:e_method:src:Project_RMA:MainUnit.@unitclass.saveme(System.Integer)" />
+      <reference referencedUin="delphi:l_ast:src:Project_RMA:MainUnit.@unitclass.Form1" />
+    </reference>
+  </view>
+</nodeSet>

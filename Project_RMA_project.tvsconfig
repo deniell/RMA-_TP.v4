@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<TgConfig Version="3" SubLevelDisabled="False">
+  <Option Name="namespaceFolder.DataUnit" Type="System.String" Value="DataUnit" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.MainUnit" Type="System.String" Value="MainUnit" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.UnitAbout" Type="System.String" Value="UnitAbout" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Unit_NewCalc" Type="System.String" Value="Unit_NewCalc" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.UnitBiSet" Type="System.String" Value="UnitBiSet" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.UnitPovParametrs" Type="System.String" Value="UnitPovParametrs" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.UWek" Type="System.String" Value="UWek" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Unit_Otklon" Type="System.String" Value="Unit_Otklon" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.SettingsUnit" Type="System.String" Value="SettingsUnit" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.u_Word_Excel" Type="System.String" Value="u_Word_Excel" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Project_RMA" Type="System.String" Value="Project_RMA" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.UnitRozmFType" Type="System.String" Value="UnitRozmFType" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.UnitAiSet" Type="System.String" Value="UnitAiSet" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.UnitFiSet" Type="System.String" Value="UnitFiSet" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.UnitZiSet" Type="System.String" Value="UnitZiSet" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.UnitResults" Type="System.String" Value="UnitResults" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.UnitTB" Type="System.String" Value="UnitTB" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.UnitZvit" Type="System.String" Value="UnitZvit" Category="General" IsBrowsable="False" />
+</TgConfig>

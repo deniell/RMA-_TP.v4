@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="vzzbatbjdf4z0pguf_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="design:view:::8invwin00ta9wz2it_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="120,440,107,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitBiSet.TForm8" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitBiSet.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::rk5ide7mlta1qu18o_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="120,0,122,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:SettingsUnit.TForm2" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:SettingsUnit.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::sit95blvutau8vc8i_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="0,600,120,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:Unit_Otklon.TForm6" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:Unit_Otklon.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::hvrj1aqyxtarxsfbo_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="140,280,155,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitPovParametrs.TForm5" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitPovParametrs.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::u40dvx1nu4a0viur_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="260,0,103,263" />
+      <property name="hideClass" value="False" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TSettings" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TCut" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TAi" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TBi" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TFi" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TZi" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.Ttb" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TMatrix" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TORL" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::gtvck8587uafdddqn_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="340,820,89,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UWek.TfmWek" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UWek.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::ezool70a0uasxj0xm_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="0,280,133,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:Unit_NewCalc.TForm3" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:Unit_NewCalc.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::bpyxa6edcua3l4vpp_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="40,980,118,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitResults.TForm12" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitResults.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::65tw14ojiua34914r_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="380,440,106,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitZiSet.TForm14" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitZiSet.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::fe0pd2ypoua0x82oh_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="0,440,107,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitAiSet.TForm4" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitAiSet.@unitclass" />
+      <reference referencedUin="design:link:::i08ju54og0i_l">
+        <property name="sourceAnchor" value="52,583" />
+        <property name="targetAnchor" value="53,620" />
+        <property name="bendpoints" value="" />
+      </reference>
+    </reference>
+    <reference referencedUin="design:view:::ywmlw13truaz60zjp_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="240,440,106,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitFiSet.TForm9">
+        <reference referencedUin="design:link:::f9whq0sg9us_l">
+          <property name="sourceAnchor" value="301,519" />
+          <property name="targetAnchor" value="301,474" />
+          <property name="bendpoints" value="" />
+        </reference>
+      </reference>
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitFiSet.@unitclass" />
+      <reference referencedUin="design:link:::p1bzf65fg0t_l">
+        <property name="sourceAnchor" value="258,583" />
+        <property name="targetAnchor" value="242,674" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="design:link:::8yjdiil4crj_l">
+        <property name="sourceAnchor" value="314,583" />
+        <property name="targetAnchor" value="314,654" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="design:link:::s2gkifiq6eq_l">
+        <property name="sourceAnchor" value="335,583" />
+        <property name="targetAnchor" value="376,654" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="design:link:::0tkebqnodjf_l">
+        <property name="sourceAnchor" value="335,583" />
+        <property name="targetAnchor" value="343,820" />
+        <property name="bendpoints" value="" />
+      </reference>
+      <reference referencedUin="design:link:::nvj92yuipii_l">
+        <property name="sourceAnchor" value="282,583" />
+        <property name="targetAnchor" value="282,840" />
+        <property name="bendpoints" value="" />
+      </reference>
+    </reference>
+    <reference referencedUin="design:view:::0gr1808wuua67ca2n_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="220,980,97,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitZvit.TForm10" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitZvit.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::onp61zbzxuadqinlo_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="540,0,109,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitAbout.TForm13" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitAbout.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::zge3gu25qu4tzavgm_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="540,240,128,126" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:Project_RMA.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::0f33uwq87vaetuxst_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="180,820,144,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitRozmFType.TForm7" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitRozmFType.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::qhrjm78kz553y0s5j_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="0,0,104,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:MainUnit.TForm1" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:MainUnit.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::zd3s6t5hfvabav0ur_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="372,654,92,143" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UZmin.TfmZmin" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UZmin.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::0xowts0kivahfixrr_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="380,0,135,126" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:u_Word_Excel.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::ecbe6qjqovay22olg_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="283,654,86,143" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:URvb.TfmRvb" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:URvb.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::3a53botwuvaxkd7ie_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="194,654,79,143" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UEb.TfmBaza1" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UEb.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::0qz0nams6qdbcg7gl_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="540,440,93,143" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitTB.TForm11" />
+      <reference referencedUin="delphi:e_class:src:Project_RMA:UnitTB.@unitclass" />
+    </reference>
+  </view>
+</nodeSet>

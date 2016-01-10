@@ -1,0 +1,11 @@
+[main]
+n.strings=10
+detal.name=Стакан
+forma=1
+manuf.type=2
+n.oper=4
+zag.shape=4
+det.shape=9
+zag.dim=3
+det.dim=8
+tech.dim=12

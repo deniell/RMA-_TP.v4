@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="fe0pd2ypoua0x82oh_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+  </view>
+  <link uin="i08ju54og0i_l">
+    <property name="$metaclass" value="Dependency Link" />
+    <property name="$name" value="Dependency Link1" />
+    <participant referencedUin="design:view:::fe0pd2ypoua0x82oh_v" role="Client" />
+    <participant referencedUin="design:view:::sit95blvutau8vc8i_v" role="Supplier" />
+  </link>
+</nodeSet>

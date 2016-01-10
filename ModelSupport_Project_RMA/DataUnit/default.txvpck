@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="u40dvx1nu4a0viur_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TSettings">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,130,184" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TSettings.MethodCalc" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TSettings.Addings" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TSettings.Demo" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TSettings.Date1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TSettings.Time1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TSettings.Kompens1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TSettings.SaveMet" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TCut">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="159,1,99,229" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TCut.Ob" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TCut.Oper1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TCut.Oper2" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TCut.Oper3" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TCut.Oper4" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TCut.Oper5" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TCut.Oper6" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TCut.Oper7" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TCut.Oper8" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TCut.Axis" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TAi">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="50,213,99,379" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.NAi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.N1List" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.N1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.N1f" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.N2List" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.N2" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.N2f" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.Size" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.IT" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.ES" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.EI" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.T" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.Em" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.Amax" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.Amin" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.Am" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.Amf" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.Kind" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.W" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TAi.Psi" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TBi">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="168,249,99,304" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.NBi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.N1List" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.N1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.N2List" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.N2" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.Size" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.ES" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.EI" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.T" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.Em" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.Bmax" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.Bmin" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.Bm" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.Zagot" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TBi.W" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TFi">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="168,572,99,409" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.NFi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.N1List" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.N1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.N2List" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.N2" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.Size" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.ES" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.EI" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.T" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.Em" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.Fmax" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.Fmin" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.Fm" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.W" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.Wek" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.Eb" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.Rvb" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.dRvb" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.Koef" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.Kind" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.Typ1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TFi.IT" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TZi">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="69,611,90,229" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TZi.NZi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TZi.Name" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TZi.N1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TZi.N2" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TZi.Met" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TZi.Zmax" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TZi.Zmin" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TZi.Zm" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TZi.Kind" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TZi.W" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.Ttb">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="305,1,117,169" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.Ttb.NOper" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.Ttb.NameOper" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.Ttb.pOX" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.Ttb.OX" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.Ttb.pOY" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.Ttb.OY" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TMatrix">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="305,189,94,109" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TMatrix.Names" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TMatrix.index" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.TORL">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="305,317,132,184" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TORL.Lp1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TORL.Lp2" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TORL.Rp0" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TORL.Rp1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TORL.Rp2" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TORL.chain1" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.TORL.chain2" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:Project_RMA:DataUnit.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.Name" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.fname" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.Mname" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.forma" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.Mtype" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.NOp" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.NZag" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.NDet" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.NBi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.NAi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.NFi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.Zn" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.NPov" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.PAi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.PBi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.PFi" />
+      <reference referencedUin="delphi:e_field:src:Project_RMA:DataUnit.@unitclass.PZi" />
+      <reference referencedUin="delphi:l_ast:src:Project_RMA:DataUnit.@unitclass.PAi" />
+      <reference referencedUin="delphi:l_ast:src:Project_RMA:DataUnit.@unitclass.PBi" />
+      <reference referencedUin="delphi:l_ast:src:Project_RMA:DataUnit.@unitclass.PFi" />
+      <reference referencedUin="delphi:l_ast:src:Project_RMA:DataUnit.@unitclass.PZi" />
+    </reference>
+  </view>
+</nodeSet>

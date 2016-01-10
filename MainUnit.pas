@@ -1,0 +1,1032 @@
+unit MainUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, jpeg, Buttons, StdCtrls, Menus, ComCtrls, ToolWin, ImgList,
+  XPMan, ActnMan, ActnColorMaps, DataUnit, Grids, ActnCtrls, AppEvnts,
+  ActnMenus, ComObj, ActiveX, u_Word_Excel, ShellApi;
+
+type
+  TForm1 = class(TForm)
+    ControlBar1: TControlBar;
+    MainMenu1: TMainMenu;
+    File_1: TMenuItem;
+    New: TMenuItem;
+    Open: TMenuItem;
+    Exit: TMenuItem;
+    N5: TMenuItem;
+    N6: TMenuItem;
+    Settings: TMenuItem;
+    Help: TMenuItem;
+    Save: TMenuItem;
+    Help_1: TMenuItem;
+    N2: TMenuItem;
+    Info: TMenuItem;
+    ToolBar1: TToolBar;
+    ToolButton_New: TToolButton;
+    ToolButton_Open: TToolButton;
+    ToolButton_Save: TToolButton;
+    ToolButton3: TToolButton;
+    ToolButton_Zvit: TToolButton;
+    ToolButton5: TToolButton;
+    ImageList1: TImageList;
+    StatusBar1: TStatusBar;
+    OpenDialog1: TOpenDialog;
+    SaveDialog1: TSaveDialog;
+    N4: TMenuItem;
+    Image1: TImage;
+    XPManifest1: TXPManifest;
+    N7: TMenuItem;
+    View1: TMenuItem;
+    Ai_ch: TMenuItem;
+    Bi_ch: TMenuItem;
+    Fi_ch: TMenuItem;
+    N14: TMenuItem;
+    TB_ch: TMenuItem;
+    N16: TMenuItem;
+    StringGrid1: TStringGrid;
+    StringGrid2: TStringGrid;
+    Label1: TLabel;
+    Label2: TLabel;
+    ApplicationEvents1: TApplicationEvents;
+    Label3: TLabel;
+    ToolButton_Matrix: TToolButton;
+    ToolButton_Ai: TToolButton;
+    ToolButton_Bi: TToolButton;
+    ToolButton_Fi: TToolButton;
+    ToolButton_Zi: TToolButton;
+    Zi_ch: TMenuItem;
+    ToolButton1: TToolButton;
+    ToolButton_TB: TToolButton;
+    N_refresh: TMenuItem;
+    ToolButton_ReCalc: TToolButton;
+    procedure FormActivate(Sender: TObject);
+    procedure SettingsClick(Sender: TObject);
+    procedure ExitClick(Sender: TObject);
+    procedure NewClick(Sender: TObject);
+    procedure OpenClick(Sender: TObject);
+    procedure SaveClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure InfoClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure ApplicationEvents1Hint(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure View1Click(Sender: TObject);
+    procedure Help_1Click(Sender: TObject);
+    procedure N16Click(Sender: TObject);
+    procedure Ai_chClick(Sender: TObject);
+    procedure Bi_chClick(Sender: TObject);
+    procedure Fi_chClick(Sender: TObject);
+    procedure Zi_chClick(Sender: TObject);
+    procedure TB_chClick(Sender: TObject);
+    procedure N_refreshClick(Sender: TObject);
+    procedure ToolButton_BiClick(Sender: TObject);
+//    procedure BitBtn1Click(Sender: TObject);
+  private
+    { Private declarations }
+    procedure ShowHint(Sender: TObject);
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  Sys_F:TStrings;
+  tmp_f:TStrings;
+  FileNane:string;
+  z_s:integer;
+  counter: Integer;
+  Dname, Name, fname, Mname : string;
+  forma,                           //форма деталі
+  Mtype,                           //серійність виробництва
+  NOp,                             //К-сть операцій ТП
+  NZag,                            //К-сть поверхонь заготовки
+  NDet,                            //К-сть поверхонь деталі
+  NBi,                             //К-сть розмірів заготовки
+  NAi,                             //К-сть конструкторських розмірів
+  NFi,                             //К-сть технологічних розмірів
+  NZi,                             //К-сть припусків
+  Zn  : integer;                   //К-сть припусків
+  NScalc,                          //Новий розрахунок чи завантажуємо
+  z,z_,qt: integer;
+  POb: array of TCut;              //Масив властивостей поверхонь
+  PAi: array of TAi;               //Масив властивостей конструкторських розм.
+  PBi: array of TBi;               //Масив властивостей розм. заготовки
+  PFi: array of TFi;               //Масив властивостей технологічних розм.
+  PZi: array of TZi;               //Масив властивостей припусків
+  PTB: array of Ttb;               //Масив властивостей технологічних баз
+  demo,SaveCalc:byte;
+  adres: String; //для адреса, откуда запущена программа
+  m1,Ai_rw,Bi_rw,Fi_rw,Zi_rw,TB_rw,Rw:boolean;
+  procedure OpenRMA(path:string; var n1:integer);
+  procedure saveme(n:integer);
+  function IsOLEObjectInstalled(Name: String): boolean;
+
+implementation
+
+uses SettingsUnit,
+     Unit_NewCalc,
+     UnitAbout,
+     UnitAiSet,
+     UnitPovParametrs,
+     Unit_Otklon,
+     UnitRozmFType,
+     UnitBiSet,
+     UnitFiSet,
+     UWek,
+     URvb,
+     UEb,
+     UnitZiSet,
+     UZmin,
+     UnitTB,
+     UnitResults,
+     UnitZvit;
+
+{$R *.dfm}
+
+{..............................................................................}
+Function IsOLEObjectInstalled(Name: String): boolean;
+var
+  ClassID: TCLSID;
+  Rez : HRESULT;
+begin
+// Ищем CLSID OLE-объекта
+  Rez := CLSIDFromProgID(PWideChar(WideString(Name)), ClassID);
+  if Rez = S_OK then
+ // Объект найден
+    Result := true
+  else
+    Result := false;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.FormShow(Sender: TObject);
+var
+//    ls:integer;
+ //   str:string;
+    Sys_F:TStrings;
+begin
+
+    qt:=0;
+    m1:=false;
+    Ai_rw:=false;
+    Bi_rw:=false;
+    Fi_rw:=false;
+    Zi_rw:=false;
+    TB_rw:=false;
+    Rw:=false;
+    Application.OnHint:=ShowHint;
+    label3.Visible:=false;
+    Ai_ch.Enabled:=false;
+    Bi_ch.Enabled:=false;
+    Fi_ch.Enabled:=false;
+    Zi_ch.Enabled:=false;
+    TB_ch.Enabled:=false;
+    View1.Enabled:=false;
+    N16.Enabled:=false;//matrix
+    N_refresh.Enabled:=false;
+    ToolButton_Zvit.Enabled:=false;
+    ToolButton_Matrix.Enabled:=false;
+    ToolButton_Ai.Enabled:=false;
+    ToolButton_Bi.Enabled:=false;
+    ToolButton_Fi.Enabled:=false;
+    ToolButton_Zi.Enabled:=false;
+    Toolbutton_TB.Enabled:=false;
+    Toolbutton_ReCalc.Enabled:=false;
+
+    z_s:=0;
+    demo:=0;
+    counter:=-1;
+{--- Зчитування з файлу параметрів ---}
+   adres := ExtractFilePath(Application.ExeName);
+  //  str:=Application.ExeName;
+  //  ls:=length(Application.ExeName);
+  //  setlength(str,ls-15);
+    Sys_F:=TStringList.Create();
+    Sys_F.LoadFromFile(adres+'settings.ini');
+    Set1.MethodCalc:=strtoint(Sys_F.ValueFromIndex[0]);
+
+    case Set1.MethodCalc of
+        0:Form1.StatusBar1.Panels[1].Text:='  Max';
+        1:Form1.StatusBar1.Panels[1].Text:='  Im';
+        2:Form1.StatusBar1.Panels[1].Text:='  PRG';
+    end;
+
+    if strtoint(Sys_F.ValueFromIndex[1])=0 then
+      begin
+        Set1.Addings:=false;
+        StatusBar1.Panels[2].Text:='';
+      end
+      else
+      begin
+        Set1.Addings:=true;
+        StatusBar1.Panels[2].Text:='  Add';
+      end;
+
+    if strtoint(Sys_F.ValueFromIndex[2])=0 then
+      begin
+        Set1.Demo:=false;
+        StatusBar1.Panels[3].Text:='';
+      end
+      else
+      begin
+        Set1.Demo:=true;
+        StatusBar1.Panels[3].Text:=' Demo';
+      end;
+
+    if strtoint(Sys_F.ValueFromIndex[3])=0 then
+      begin
+        Set1.Date1:=false;
+      end
+      else
+      begin
+        Set1.Date1:=true;
+      end;
+
+    if strtoint(Sys_F.ValueFromIndex[4])=0 then
+      begin
+        Set1.Time1:=false;
+      end
+      else
+      begin
+        Set1.Time1:=true;
+      end;
+
+    if strtoint(Sys_F.ValueFromIndex[5])=0 then
+      begin
+        Set1.Kompens1:=false;
+      end
+      else
+      begin
+        Set1.Kompens1:=true;
+      end;
+
+    if strtoint(Sys_F.ValueFromIndex[6])=0 then
+      begin
+        Set1.Wview:=false;
+      end
+      else
+      begin
+        Set1.Wview:=true;
+      end;
+
+    Set1.SaveMet:=strtoint(Sys_F.ValueFromIndex[7]);
+    Sys_F.free;
+ //   str:='';
+//    ls:=0;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.Help_1Click(Sender: TObject);
+var
+//  ls   : integer;
+  str1 : pchar;
+  str  : string;
+begin
+//Справка
+    str:=(ExtractFilePath(Application.ExeName))+'help\Help.pdf';
+    str1:=PChar(str);
+    ShellExecute(Handle,'open',str1,nil,nil,SW_SHOWNORMAL);
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.FormActivate(Sender: TObject);
+begin
+    if z_s=0 then
+        begin
+            Save.Enabled:=false;
+            Toolbutton_Save.Enabled:=false;
+        end
+        else
+        begin
+            Save.Enabled:=true;
+            Toolbutton_Save.Enabled:=true;
+        end;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.SettingsClick(Sender: TObject);
+begin
+    Form2.Show;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.ExitClick(Sender: TObject);
+begin
+    Form1.Close;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+    qt:=1;
+    if (Application.MessageBox
+                    ('Перед закриттям збережіть всі незбережені дані!'+#13#10+
+                     'Чи дійсно ви хочете завершити роботу?',
+                     'Підтвердіть завершення роботи',MB_iconquestion+MB_yesno)<>idyes)
+
+    then canclose:=false else
+      begin
+        try
+        finalize(SettingsUnit.Set1);
+        finalize(UnitAiSet.PAi);
+        finalize(UnitPovParametrs.POb);
+        finalize(UnitBiSet.PBi);
+        finalize(UnitZiSet.PZi);
+        finalize(UnitTB.PTB);
+        finalize(UnitResults.ORL);
+        finalize(UnitResults.Pov);
+        finalize(UnitResults.Matrix);
+        UnitFiSet.Form9.Image1.Free;
+        UnitRozmFType.Form7.Image6.Free;
+        UnitRozmFType.Form7.Free;
+
+        except;
+        end;
+        end;
+      end;
+
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.NewClick(Sender: TObject);
+var  // ls:integer;
+   // str:string;
+    tmp_f:TStrings;
+begin
+
+    if Label1.Visible then
+      begin
+        Label1.Visible:=false;
+        Label2.Visible:=false;
+        Stringgrid1.Visible:=false;
+        Stringgrid2.Visible:=false;
+      end;
+
+    Save.Enabled:=true;
+    Toolbutton_Save.Enabled:=true;
+    z_s:=1;
+
+    demo:=0;
+    SaveCalc:=0;
+
+////////////////////////////////////////////////////////////// очистка массивов
+    if counter>0 then finalize(UnitPovParametrs.POb);
+    if counter>1 then finalize(UnitAiSet.PAi);
+    if counter>2 then finalize(UnitBiSet.PBi);
+    if counter>3 then finalize(UnitFiSet.PFi);
+    if counter>4 then finalize(UnitZiSet.PZi);
+    if counter>5 then
+      begin
+        finalize(UnitTB.PTB);
+        finalize(UnitResults.ORL);
+        finalize(UnitResults.Pov);
+        finalize(UnitResults.Matrix);
+      end;
+    counter:=-1;
+    ToolButton_Matrix.Enabled:=false;
+
+  //  str:=Application.ExeName;
+  //  ls:=length(Application.ExeName);
+  //  setlength(str,ls-15);
+    adres := ExtractFilePath(Application.ExeName);
+    tmp_f:=TStringList.Create();    // Створюєм структуру даних для збереження в пам"яті введених даних
+    tmp_f.LoadFromFile(adres+'data.dat');
+    tmp_f.Clear;
+    tmp_f.Free;
+
+    tmp_f:=TStringList.Create();    // Створюєм структуру даних для збереження в пам"яті введених даних
+    tmp_f.LoadFromFile(adres+'otv.dat');
+    tmp_f.Clear;
+    tmp_f.Free;
+
+    tmp_f:=TStringList.Create();    // Створюєм структуру даних для збереження в пам"яті введених даних
+    tmp_f.LoadFromFile(adres+'shapes.dat');
+    tmp_f.Clear;
+    tmp_f.Free;
+
+    NScalc:=1;
+    unit_newcalc.Form3.Show;           // показываем форму начала розщета
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.N_refreshClick(Sender: TObject);
+begin
+    UnitTB.Form11.BitBtn1.Click;
+    UnitResults.Form12.BitBtn1.Click;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.FormResize(Sender: TObject);
+var
+    ct,cl:integer;
+begin
+    if qt=0 then
+      begin
+        ct:=(MainUnit.Form1.Height-31-20) div 2;
+        cl:=(MainUnit.Form1.Width-10);
+
+        MainUnit.Form1.StringGrid1.Width:=cl;
+        MainUnit.Form1.StringGrid1.Height:=ct-54;
+
+        MainUnit.Form1.StringGrid2.Top:=ct+8+2;
+        MainUnit.Form1.StringGrid2.Height:=ct-32;
+        MainUnit.Form1.StringGrid2.Width:=cl-5;
+
+        MainUnit.Form1.Label2.Top:=ct-7;
+        StatusBar1.Panels[0].Width:=round(2*MainUnit.Form1.Width/3);
+      end;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.OpenClick(Sender: TObject);
+var
+    n:integer;
+begin
+
+    if Label1.Visible then
+      begin
+        Label1.Visible:=false;
+        Label2.Visible:=false;
+        Stringgrid1.Visible:=false;
+        Stringgrid2.Visible:=false;
+      end;
+
+    if counter>0 then finalize(UnitPovParametrs.POb);
+    if counter>1 then finalize(UnitAiSet.PAi);
+    if counter>2 then finalize(UnitBiSet.PBi);
+    if counter>3 then finalize(UnitFiSet.PFi);
+    if counter>4 then finalize(UnitZiSet.PZi);
+    if counter>5 then
+      begin
+        finalize(UnitTB.PTB);
+        finalize(UnitResults.ORL);
+        finalize(UnitResults.Pov);
+        finalize(UnitResults.Matrix);
+      end;
+
+    n:=-1;
+    if OpenDialog1.Execute then               { Display Open dialog box }
+            OpenRMA(OpenDialog1.FileName,n);
+
+    counter:=n;
+    z_s:=1;
+    if Set1.Demo=true then
+      begin  //для демонстрації
+        if counter>-1 then
+          begin
+            Save.Enabled:=true;
+            Toolbutton_Save.Enabled:=true;
+            Unit_NewCalc.Form3.Show;
+          end;                          //для демонстрації
+      end
+      else
+      begin
+      NScalc:=2;
+        if counter>-1 then
+          begin      //Новий розрахунок
+            Save.Enabled:=true;
+            Toolbutton_Save.Enabled:=true;
+            if counter=0 then Unit_NewCalc.Form3.Show  //збережено на "Новий розрахунок"
+            else
+              begin
+                  Unit_NewCalc.Form3.NewCalc_Show;
+                  Unit_NewCalc.Form3.NewCalc_Close;
+                  if counter>0 then
+                    begin
+                      if counter=1 then UnitPovParametrs.Form5.Show //збережено на "Параметрах поверхонь"
+                      else
+                        begin
+                            UnitPovParametrs.Form5.Pov_Show;
+                            UnitPovParametrs.Form5.Pov_Close;
+                            if counter>1 then
+                              begin
+                                if counter=2 then UnitAiSet.Form4.Show //збережено на "Констр. розм."
+                                else
+                                  begin
+                                    UnitAiSet.Form4.Ai_Show;
+                                    UnitAiSet.Form4.Ai_Close;
+                                    if counter>2 then
+                                    begin
+                                      if counter=3 then UnitBiSet.Form8.Show //збережено на "Розм. загот."
+                                      else
+                                        begin
+                                          UnitBiSet.Form8.Bi_Show;
+                                          UnitBiSet.Form8.Bi_Close;
+                                          if counter>3 then
+                                          begin
+                                            if counter=4 then UnitFiSet.Form9.Show //збережено на "Технол. розм."
+                                            else
+                                              begin
+                                                UnitFiSet.Form9.Fi_Show;
+                                                UnitFiSet.Form9.Fi_Close;
+                                                if counter>4 then
+                                                begin
+                                                  if counter=5 then UnitZiSet.Form14.Show //збережено на "Припусках"
+                                                  else
+                                                    begin
+                                                      UnitZiSet.Form14.Zi_Show;
+                                                      UnitZiSet.Form14.Zi_Close;
+                                                      if counter>5 then
+                                                      begin
+                                                        if counter=6 then UnitTB.Form11.Show //збережено на "Базах"
+                                                        else
+                                                          begin
+                                                            UnitTB.Form11.TB_Show;
+                                                            UnitTB.Form11.BitBtn1.Click;
+                                                          end;
+                                                      end;
+                                                   end;
+                                                end;
+                                              end;
+                                          end;
+                                        end;
+                                    end;
+                                  end;
+                              end;
+                            end;
+                        end;
+                      end;
+                  end;
+                end;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.SaveClick(Sender: TObject);
+var
+  ToR: TextFile;
+//  NumRead,
+//  NumWritten: Integer;
+//  Buf: array[1..2048] of Char;
+  n:integer;
+begin
+    SaveCalc:=1;
+    Dname:=Unit_NewCalc.Dname;
+    if Dname='' then SaveDialog1.FileName:='Нова деталь.rma'
+      else SaveDialog1.FileName:=Dname+'.rma';
+
+    if SaveDialog1.Execute then      { Display Save dialog box}
+    begin
+      AssignFile(ToR, SaveDialog1.FileName);	{ Open output file }
+      Rewrite(ToR);	{ Record size = 1 }
+      CloseFile(ToR);
+      tmp_f:=TStringList.Create();
+      tmp_f.LoadFromFile(SaveDialog1.FileName);  { Open output file }
+      tmp_f.Clear;
+
+      if counter>-1 then
+      begin
+        n:=0;
+        repeat
+            saveme(n);
+            n:=n+1;
+        until n>counter;
+      end;
+
+      tmp_f.SaveToFile(SaveDialog1.FileName);
+      tmp_f.Free;
+    end;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.N16Click(Sender: TObject); //Показати матрицю розм. зв'язків
+begin
+  m1:=true;
+  UnitResults.Form12.Visible:=true;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.InfoClick(Sender: TObject);
+begin
+  Form13.ShowModal;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.Ai_chClick(Sender: TObject);
+begin
+//Викликає редагування конструкторських розмірів
+  Ai_rw:=true;
+  Form4.Show;
+end;
+{..............................................................................}
+
+{..............................................................................
+procedure TForm1.BitBtn1Click(Sender: TObject);
+begin
+ try
+
+        finalize(UnitResults.ORL);
+        finalize(UnitResults.Pov);
+        finalize(UnitResults.Matrix);
+
+        except;
+        end;
+ Form1.Visible:=False;
+ Form12.Close;
+ Form11.Show;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.Bi_chClick(Sender: TObject);
+begin
+//Викликає редагування розмірів заготовки
+  Bi_rw:=true;
+  Form8.Show;
+end;
+
+procedure TForm1.ToolButton_BiClick(Sender: TObject);
+begin
+ //Викликає редагування розмірів заготовки
+  Bi_rw:=true;
+  Form8.Show;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.Fi_chClick(Sender: TObject);
+begin
+//Викликає редагування технологічних розмірів
+  Fi_rw:=true;
+  Form9.Show;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.Zi_chClick(Sender: TObject);
+begin
+//Викликає редагування припусків
+  Zi_rw:=true;
+  Form14.Show;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.TB_chClick(Sender: TObject);
+begin
+//Викликає редагування ТБ
+  TB_rw:=true;
+  Form11.Show;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.ApplicationEvents1Hint(Sender: TObject);
+begin
+  Statusbar1.Panels[0].Text:=Application.Hint;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.ShowHint(Sender: TObject);
+begin
+  StatusBar1.Panels[0].Text:=Application.Hint;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure TForm1.View1Click(Sender: TObject);
+begin
+  Form10.ShowModal;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure OpenRMA(path:string; var n1:integer);
+var
+  tmp_f : TStrings;
+  a,s,n2 : integer;
+begin
+  tmp_f:=TStringList.Create();
+  tmp_f.LoadFromFile(path);
+  try
+    a:=tmp_f.IndexOf('[main]')+1;
+    n2:=strtoint(tmp_f.ValueFromIndex[a]);
+    n1:=n2;
+  except
+    ShowMessage('Ошибка при чтенни из файла! Или файл не содержит информации.');
+    exit;
+  end;
+
+  if n2>-1 then
+    begin
+      Dname:=tmp_f.ValueFromIndex[a+1];
+      forma:=strtoint(tmp_f.ValueFromIndex[a+2]);
+      Mtype:=strtoint(tmp_f.ValueFromIndex[a+3]);
+      NOp:=strtoint(tmp_f.ValueFromIndex[a+4]);
+      NZag:=strtoint(tmp_f.ValueFromIndex[a+5]);
+      NDet:=strtoint(tmp_f.ValueFromIndex[a+6]);
+      NBi:=strtoint(tmp_f.ValueFromIndex[a+7]);
+      NAi:=strtoint(tmp_f.ValueFromIndex[a+8]);
+      NFi:=strtoint(tmp_f.ValueFromIndex[a+9]);
+    end;
+
+  if n2>0 then
+    begin
+      SetLength(POb,NDet);                //Задання масиву поверхонь
+      a:=tmp_f.IndexOf('[shapes]')+2;
+      Zn:=strtoint(tmp_f.ValueFromIndex[a-1]);
+      for s:=0 to NDet-1 do
+      begin
+        try
+        POb[s].Ob:=strtoint(tmp_f.ValueFromIndex[(s*10)+a]);
+        POb[s].Oper1:=strtoint(tmp_f.ValueFromIndex[(s*10)+a+1]);
+        POb[s].Oper2:=strtoint(tmp_f.ValueFromIndex[(s*10)+a+2]);
+        POb[s].Oper3:=strtoint(tmp_f.ValueFromIndex[(s*10)+a+3]);
+        POb[s].Oper4:=strtoint(tmp_f.ValueFromIndex[(s*10)+a+4]);
+        POb[s].Oper5:=strtoint(tmp_f.ValueFromIndex[(s*10)+a+5]);
+        POb[s].Oper6:=strtoint(tmp_f.ValueFromIndex[(s*10)+a+6]);
+        POb[s].Oper7:=strtoint(tmp_f.ValueFromIndex[(s*10)+a+7]);
+        POb[s].Oper8:=strtoint(tmp_f.ValueFromIndex[(s*10)+a+8]);
+        if (tmp_f.ValueFromIndex[(s*10)+a+9]='0') then POb[s].Axis:=false
+          else POb[s].Axis:=true;
+
+        except
+        end;
+      end;
+    end;
+
+  if n2>1 then
+    begin
+      SetLength(PAi,NAi);                 //Задання масиву конструкторських розмірів
+      a:=tmp_f.IndexOf('[Ai]')+1;
+      for s:=0 to NAi-1 do
+      begin
+        try
+        PAi[s].NAi:=strtoint(tmp_f.ValueFromIndex[(s*18)+a]);
+        PAi[s].N1List:=strtoint(tmp_f.ValueFromIndex[(s*18)+a+1]);
+        PAi[s].N1:=tmp_f.ValueFromIndex[(s*18)+a+2];
+        PAi[s].N1f:=tmp_f.ValueFromIndex[(s*18)+a+3];
+        PAi[s].N2List:=strtoint(tmp_f.ValueFromIndex[(s*18)+a+4]);
+        PAi[s].N2:=tmp_f.ValueFromIndex[(s*18)+a+5];
+        PAi[s].N2f:=tmp_f.ValueFromIndex[(s*18)+a+6];
+        PAi[s].Size:=strtofloat(tmp_f.ValueFromIndex[(s*18)+a+7]);
+        PAi[s].IT:=tmp_f.ValueFromIndex[(s*18)+a+8];
+        PAi[s].ES:=strtofloat(tmp_f.ValueFromIndex[(s*18)+a+9]);
+        PAi[s].EI:=strtofloat(tmp_f.ValueFromIndex[(s*18)+a+10]);
+        PAi[s].T:=strtofloat(tmp_f.ValueFromIndex[(s*18)+a+11]);
+        PAi[s].Em:=strtofloat(tmp_f.ValueFromIndex[(s*18)+a+12]);
+        PAi[s].Amax:=strtofloat(tmp_f.ValueFromIndex[(s*18)+a+13]);
+        PAi[s].Amin:=strtofloat(tmp_f.ValueFromIndex[(s*18)+a+14]);
+        PAi[s].Am:=strtofloat(tmp_f.ValueFromIndex[(s*18)+a+15]);
+        PAi[s].Kind:=strtoint(tmp_f.ValueFromIndex[(s*18)+a+16]);
+        PAi[s].Psi:=strtofloat(tmp_f.ValueFromIndex[(s*18)+a+17]);
+        PAi[s].W:=0;
+        except
+        end;
+      end;
+    end;
+
+  if n2>2 then
+    begin
+      SetLength(PBi,NBi);                 //Задання масиву розмірів заготовки
+      a:=tmp_f.IndexOf('[Bi]')+1;
+      for s:=0 to NBi-1 do
+        begin
+          try
+          PBi[s].NBi:=strtoint(tmp_f.ValueFromIndex[(s*14)+a]);
+          PBi[s].N1List:=strtoint(tmp_f.ValueFromIndex[(s*14)+a+1]);
+          PBi[s].N1:=tmp_f.ValueFromIndex[(s*14)+a+2];
+          PBi[s].N2List:=strtoint(tmp_f.ValueFromIndex[(s*14)+a+3]);
+          PBi[s].N2:=tmp_f.ValueFromIndex[(s*14)+a+4];
+          PBi[s].Size:=strtofloat(tmp_f.ValueFromIndex[(s*14)+a+5]);
+          PBi[s].ES:=strtofloat(tmp_f.ValueFromIndex[(s*14)+a+6]);
+          PBi[s].EI:=strtofloat(tmp_f.ValueFromIndex[(s*14)+a+7]);
+          PBi[s].T:=strtofloat(tmp_f.ValueFromIndex[(s*14)+a+8]);
+          PBi[s].Em :=strtofloat(tmp_f.ValueFromIndex[(s*14)+a+9]);
+          PBi[s].Bmax:=strtofloat(tmp_f.ValueFromIndex[(s*14)+a+10]);
+          PBi[s].Bmin:=strtofloat(tmp_f.ValueFromIndex[(s*14)+a+11]);
+          PBi[s].Bm:=strtofloat(tmp_f.ValueFromIndex[(s*14)+a+12]);
+          PBi[s].Zagot:=strtoint(tmp_f.ValueFromIndex[(s*14)+a+13]);
+          PBi[s].W:=0;
+          except
+          end;
+        end;
+    end;
+
+  if n2>3 then
+    begin
+      SetLength(PFi,NFi);                 //Задання масиву технологічних розмірів
+      a:=tmp_f.IndexOf('[Fi]')+1;
+      for s:=0 to NFi-1 do
+        begin
+          try
+          PFi[s].NFi:=strtoint(tmp_f.ValueFromIndex[(s*22)+a]);
+          PFi[s].N1List:=strtoint(tmp_f.ValueFromIndex[(s*22)+a+1]);
+          PFi[s].N1:=tmp_f.ValueFromIndex[(s*22)+a+2];
+          PFi[s].N2List:=strtoint(tmp_f.ValueFromIndex[(s*22)+a+3]);
+          PFi[s].N2:=tmp_f.ValueFromIndex[(s*22)+a+4];
+          PFi[s].Size:=strtofloat(tmp_f.ValueFromIndex[(s*22)+a+5]);
+          PFi[s].ES:=strtofloat(tmp_f.ValueFromIndex[(s*22)+a+6]);
+          PFi[s].EI:=strtofloat(tmp_f.ValueFromIndex[(s*22)+a+7]);
+          PFi[s].T:=strtofloat(tmp_f.ValueFromIndex[(s*22)+a+8]);
+          PFi[s].Em:=strtofloat(tmp_f.ValueFromIndex[(s*22)+a+9]);
+          PFi[s].Fmax:=strtofloat(tmp_f.ValueFromIndex[(s*22)+a+10]);
+          PFi[s].Fmin:=strtofloat(tmp_f.ValueFromIndex[(s*22)+a+11]);
+          PFi[s].Fm:=strtofloat(tmp_f.ValueFromIndex[(s*22)+a+12]);
+          PFi[s].Wek:=strtofloat(tmp_f.ValueFromIndex[(s*22)+a+13]);
+          PFi[s].Eb:=strtofloat(tmp_f.ValueFromIndex[(s*22)+a+14]);
+          PFi[s].Rvb:=strtofloat(tmp_f.ValueFromIndex[(s*22)+a+15]);
+          PFi[s].Koef:=strtofloat(tmp_f.ValueFromIndex[(s*22)+a+16]);
+          PFi[s].Kind:=strtoint(tmp_f.ValueFromIndex[(s*22)+a+17]);
+          PFi[s].Typ1:=strtoint(tmp_f.ValueFromIndex[(s*22)+a+18]);
+          PFi[s].IT:=strtoint(tmp_f.ValueFromIndex[(s*22)+a+19]);
+          PFi[s].Oper:=strtoint(tmp_f.ValueFromIndex[(s*22)+a+20]);
+          PFi[s].AvtoEb:=strtoint(tmp_f.ValueFromIndex[(s*22)+a+21]);
+          PFi[s].W:=0;
+          except
+          end;
+        end;
+    end;
+
+  if n2>4 then
+    begin
+      a:=tmp_f.IndexOf('[Zi]')+1;
+      NZi:=strtoint(tmp_f.ValueFromIndex[a]);
+      SetLength(PZi,NZi);                    //Задання масиву припусків
+      a:=tmp_f.IndexOf('[Zi]')+2;
+      for s:=0 to NZi-1 do
+        begin
+          try
+          PZi[s].NZi:=strtoint(tmp_f.ValueFromIndex[(s*9)+a]);
+          PZi[s].Name:=tmp_f.ValueFromIndex[(s*9)+a+1];
+          PZi[s].Kind:=strtoint(tmp_f.ValueFromIndex[(s*9)+a+2]);
+          PZi[s].N1:=tmp_f.ValueFromIndex[(s*9)+a+3];
+          PZi[s].N2:=tmp_f.ValueFromIndex[(s*9)+a+4];
+          PZi[s].Met:=strtoint(tmp_f.ValueFromIndex[(s*9)+a+5]);
+          PZi[s].Zmax:=strtofloat(tmp_f.ValueFromIndex[(s*9)+a+6]);
+          PZi[s].Zmin:=strtofloat(tmp_f.ValueFromIndex[(s*9)+a+7]);
+          PZi[s].Zm:=strtofloat(tmp_f.ValueFromIndex[(s*9)+a+8]);
+          PZi[s].W:=0;
+          except
+          end;
+        end;
+    end;
+
+  if n2>5 then
+    begin
+      SetLength(PTB,NOp);                     //Задання масиву ТБ
+      a:=tmp_f.IndexOf('[TB]')+1;
+      for s:=0 to NOp-1 do
+        begin
+          try
+            PTB[s].NOper:=strtoint(tmp_f.ValueFromIndex[(s*4)+a]);
+            PTB[s].NameOper:=tmp_f.ValueFromIndex[(s*4)+a+1];
+            PTB[s].pOX:=strtoint(tmp_f.ValueFromIndex[(s*4)+a+2]);
+            PTB[s].OX:=tmp_f.ValueFromIndex[(s*4)+a+3];
+          except
+          end;
+        end;
+    end;
+
+tmp_f.free;
+end;
+{..............................................................................}
+
+{..............................................................................}
+Procedure saveme(n:integer);
+var s:integer;
+begin
+case n of
+  0:begin
+     tmp_f.Add('[main]');
+     tmp_f.Add('counter='+inttostr(counter));
+     tmp_f.Add('detal.name='+Dname);
+     tmp_f.Add('forma='+inttostr(Unit_NewCalc.forma));
+     tmp_f.Add('manuf.type='+inttostr(Unit_NewCalc.Mtype));
+     tmp_f.Add('n.oper='+inttostr(Unit_NewCalc.NOp));
+     tmp_f.Add('zag.shape='+inttostr(Unit_NewCalc.NZag));
+     tmp_f.Add('det.shape='+inttostr(Unit_NewCalc.NDet));
+     tmp_f.Add('zag.dim='+inttostr(Unit_NewCalc.NBi));
+     tmp_f.Add('det.dim='+inttostr(Unit_NewCalc.NAi));
+     tmp_f.Add('tech.dim='+inttostr(Unit_NewCalc.NFi));
+    end;
+  1:begin
+     tmp_f.Add('[shapes]');
+     tmp_f.Add('n.pripusk='+inttostr(UnitPovParametrs.zn));
+     for s:=0 to Unit_NewCalc.NDet-1 do begin
+      tmp_f.Add('Ob_'+inttostr(s+1)+'='+inttostr(UnitPovParametrs.POb[s].Ob));
+      tmp_f.Add('Oper1='+inttostr(UnitPovParametrs.POb[s].Oper1));
+      tmp_f.Add('Oper2='+inttostr(UnitPovParametrs.POb[s].Oper2));
+      tmp_f.Add('Oper3='+inttostr(UnitPovParametrs.POb[s].Oper3));
+      tmp_f.Add('Oper4='+inttostr(UnitPovParametrs.POb[s].Oper4));
+      tmp_f.Add('Oper5='+inttostr(UnitPovParametrs.POb[s].Oper5));
+      tmp_f.Add('Oper6='+inttostr(UnitPovParametrs.POb[s].Oper6));
+      tmp_f.Add('Oper7='+inttostr(UnitPovParametrs.POb[s].Oper7));
+      tmp_f.Add('Oper8='+inttostr(UnitPovParametrs.POb[s].Oper8));
+      if (UnitPovParametrs.POb[s].Axis=false) then tmp_f.Add('Axis=0')
+      else  tmp_f.Add('Axis=1');
+     end;
+    end;
+  2:begin
+     tmp_f.Add('[Ai]');
+     for s:=0 to Unit_NewCalc.NAi-1 do begin
+      tmp_f.Add('NAi='+inttostr(UnitAiSet.PAi[s].NAi));
+      tmp_f.Add('N1List='+inttostr(UnitAiSet.PAi[s].N1List));
+      tmp_f.Add('N1='+UnitAiSet.PAi[s].N1);
+      tmp_f.Add('N1f='+UnitAiSet.PAi[s].N1f);
+      tmp_f.Add('N2List='+inttostr(UnitAiSet.PAi[s].N2List));
+      tmp_f.Add('N2='+UnitAiSet.PAi[s].N2);
+      tmp_f.Add('N2f='+UnitAiSet.PAi[s].N2f);
+      tmp_f.Add('Size='+floattostr(UnitAiSet.PAi[s].Size));
+      tmp_f.Add('IT='+UnitAiSet.PAi[s].IT);
+      tmp_f.Add('ES='+floattostr(UnitAiSet.PAi[s].ES));
+      tmp_f.Add('EI='+floattostr(UnitAiSet.PAi[s].EI));
+      tmp_f.Add('T='+floattostr(UnitAiSet.PAi[s].T));
+      tmp_f.Add('Em='+floattostr(UnitAiSet.PAi[s].Em));
+      tmp_f.Add('Amax='+floattostr(UnitAiSet.PAi[s].Amax));
+      tmp_f.Add('Amin='+floattostr(UnitAiSet.PAi[s].Amin));
+      tmp_f.Add('Am='+floattostr(UnitAiSet.PAi[s].Am));
+      tmp_f.Add('Kind='+inttostr(UnitAiSet.PAi[s].Kind));
+      tmp_f.Add('Psi='+floattostr(UnitAiSet.PAi[s].Psi));
+     end;
+    end;
+  3:begin
+     tmp_f.Add('[Bi]');
+     for s:=0 to Unit_NewCalc.NBi-1 do begin
+      tmp_f.Add('NBi='+inttostr(UnitBiSet.PBi[s].NBi));
+      tmp_f.Add('N1List='+inttostr(UnitBiSet.PBi[s].N1List));
+      tmp_f.Add('N1='+UnitBiSet.PBi[s].N1);
+      tmp_f.Add('N2List='+inttostr(UnitBiSet.PBi[s].N2List));
+      tmp_f.Add('N2='+UnitBiSet.PBi[s].N2);
+      tmp_f.Add('Size='+floattostr(UnitBiSet.PBi[s].Size));
+      tmp_f.Add('ES='+floattostr(UnitBiSet.PBi[s].ES));
+      tmp_f.Add('EI='+floattostr(UnitBiSet.PBi[s].EI));
+      tmp_f.Add('T='+floattostr(UnitBiSet.PBi[s].T));
+      tmp_f.Add('Em='+floattostr(UnitBiSet.PBi[s].Em));
+      tmp_f.Add('Bmax='+floattostr(UnitBiSet.PBi[s].Bmax));
+      tmp_f.Add('Bmin='+floattostr(UnitBiSet.PBi[s].Bmin));
+      tmp_f.Add('Bm='+floattostr(UnitBiSet.PBi[s].Bm));
+      tmp_f.Add('Zagot='+inttostr(UnitBiSet.PBi[s].Zagot));
+     end;
+    end;
+  4:begin
+     tmp_f.Add('[Fi]');
+     for s:=0 to Unit_NewCalc.NFi-1 do begin
+      tmp_f.Add('NFi='+inttostr(UnitFiSet.PFi[s].NFi));
+      tmp_f.Add('N1List='+inttostr(UnitFiSet.PFi[s].N1List));
+      tmp_f.Add('N1='+UnitFiSet.PFi[s].N1);
+      tmp_f.Add('N2List='+inttostr(UnitFiSet.PFi[s].N2List));
+      tmp_f.Add('N2='+UnitFiSet.PFi[s].N2);
+      tmp_f.Add('Size='+floattostr(UnitFiSet.PFi[s].Size));
+      tmp_f.Add('ES='+floattostr(UnitFiSet.PFi[s].ES));
+      tmp_f.Add('EI='+floattostr(UnitFiSet.PFi[s].EI));
+      tmp_f.Add('T='+floattostr(UnitFiSet.PFi[s].T));
+      tmp_f.Add('Em='+floattostr(UnitFiSet.PFi[s].Em));
+      tmp_f.Add('Fmax='+floattostr(UnitFiSet.PFi[s].Fmax));
+      tmp_f.Add('Fmin='+floattostr(UnitFiSet.PFi[s].Fmin));
+      tmp_f.Add('Fm='+floattostr(UnitFiSet.PFi[s].Fm));
+      tmp_f.Add('Wek='+floattostr(UnitFiSet.PFi[s].Wek));
+      tmp_f.Add('Eb='+floattostr(UnitFiSet.PFi[s].Eb));
+      tmp_f.Add('Rvb='+floattostr(UnitFiSet.PFi[s].Rvb));
+      tmp_f.Add('Koef='+floattostr(UnitFiSet.PFi[s].Koef));
+      tmp_f.Add('Kind='+inttostr(UnitFiSet.PFi[s].Kind));
+      tmp_f.Add('Typ1='+inttostr(UnitFiSet.PFi[s].Typ1));
+      tmp_f.Add('IT='+inttostr(UnitFiSet.PFi[s].IT));
+      tmp_f.Add('Oper='+inttostr(UnitFiSet.PFi[s].Oper));
+      tmp_f.Add('AvtoEb='+inttostr(UnitFiSet.PFi[s].AvtoEb));
+     end;
+    end;
+  5:begin
+     tmp_f.Add('[Zi]');
+     tmp_f.Add('Zi='+inttostr(UnitZiSet.NZi));
+     for s:=0 to UnitZiSet.NZi-1 do begin
+      tmp_f.Add('NZi='+inttostr(UnitZiSet.PZi[s].NZi));
+      tmp_f.Add('Name='+UnitZiSet.PZi[s].Name);
+      tmp_f.Add('Kind='+inttostr(UnitZiSet.PZi[s].Kind));
+      tmp_f.Add('N1='+UnitZiSet.PZi[s].N1);
+      tmp_f.Add('N2='+UnitZiSet.PZi[s].N2);
+      tmp_f.Add('Met='+inttostr(UnitZiSet.PZi[s].Met));
+      tmp_f.Add('Zmax='+floattostr(UnitZiSet.PZi[s].Zmax));
+      tmp_f.Add('Zmin='+floattostr(UnitZiSet.PZi[s].Zmin));
+      tmp_f.Add('Zm='+floattostr(UnitZiSet.PZi[s].Zm));
+     end;
+    end;
+  6:begin
+     tmp_f.Add('[TB]');
+     for s:= 0 to Unit_NewCalc.NOp-1 do begin
+      tmp_f.Add('NOper='+inttostr(UnitTB.PTB[s].NOper));
+      tmp_f.Add('NameOper='+UnitTB.PTB[s].NameOper);
+      tmp_f.Add('povOX='+inttostr(UnitTB.PTB[s].pOX));
+      tmp_f.Add('NamePovOX='+UnitTB.PTB[s].OX);
+     end;
+    end;
+end;
+end;
+{..............................................................................}
+end.
